@@ -1,0 +1,10 @@
+debian-images-installation-path
+debian-mathjax-relpath
+doxygen-pdf
+revert-cmake-allow-UHD-library-and-utilities-to-be-in-separ
+rfnoc-blocks-track-runtime-abi
+obsolete-man-page
+omit-build-path
+# always-install-utilities
+fix-python-syntax-warning
+1000-appstream-metainfo.patch

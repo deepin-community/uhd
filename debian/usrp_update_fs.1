@@ -1,0 +1,38 @@
+.TH USRP_UPDATE_FS "1" "July 2021" "USRP_UPDATE_FS" "User Commands"
+.SH NAME
+usrp_update_fs: \- wrapper for uhd_images_downloader for embedded UHD devices.
+.SH DESCRIPTION
+usage: usrp_update_fs [\-h] [\-\-image IMAGE] [\-y] [\-m MANIFEST] \fB\-d\fR DEVICE_TYPE
+.IP
+[\-t GIT_TAG]
+.PP
+USRP filesystem update If run without any options, it will reset the
+filesystem to the state it was originally in, but with the same version
+("factory reset"). By using \fB\-m\fR or \fB\-t\fR, the precise version of the new
+filesystem can be selected. \fB\-t\fR master will update to the very latest
+filesystem image. Most options require access to the internet to download the
+latest manifest and/or filesystem image.
+.SS "optional arguments:"
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-\-image\fR IMAGE
+Binary image of the filesystem update. If this is
+given, all other options are ignored. Can be a file or
+a URL
+.TP
+\fB\-y\fR, \fB\-\-yes\fR
+Answer questions with yes
+.TP
+\fB\-m\fR MANIFEST, \fB\-\-manifest\fR MANIFEST
+Manifest source. Can be a file or a URL. Overwrites \fB\-t\fR
+.TP
+\fB\-d\fR DEVICE_TYPE, \fB\-\-device\-type\fR DEVICE_TYPE
+Specify/overwrite device type (DANGER! May brick
+device if used incorrectly!)
+.TP
+\fB\-t\fR GIT_TAG, \fB\-\-git\-tag\fR GIT_TAG
+Will try and locate the given git tag or branch and
+get the corresponding manifest. Ignored when \fB\-m\fR is
+given. Using this requires internet access.

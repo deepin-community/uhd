@@ -1,0 +1,42 @@
+Description: Added AppStream metainfo XML with hardware provide info.
+ This allow isenkram to propose this package when the relevant hardware is
+ present.
+Author: Petter Reinholdtsen
+Forwarded: no
+Last-Update: 2024-08-20
+---
+Index: uhd-4.7.0.0+ds1/com.ettus.sdr_software.uhd_usrp_hardware_driver.metainfo.xml
+===================================================================
+--- /dev/null  1970-01-01 00:00:00.000000000 +0000
++++ uhd-4.7.0.0+ds1/com.ettus.sdr_software.uhd_usrp_hardware_driver.metainfo.xml       2024-08-20 10:48:17.062024834 +0200
+@@ -0,0 +1,30 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<component>
++  <id>com.ettus.sdr_software.uhd_usrp_hardware_driver</id>
++  <metadata_license>MIT</metadata_license>
++  <name>uhd-host</name>
++  <summary>universal hardware driver for Ettus Research products - host apps</summary>
++  <description>
++    <p>Host utilities for the Universal Hardware Driver for Ettus
++    Research products.</p>
++
++    <p>The supported devices provide analog radio receiver and
++    transmitter hardware along with digital interfaces for getting
++    signals to and from a software defined radio running on the host
++    computer.</p>
++
++    <p>This package includes the uhd_find_devices application to
++    locate and configure attached peripherals, the uhd_usrp_probe
++    application to display hardware configuration information and
++    Doxygen generated documentation.</p>
++  </description>
++  <url type="homepage">https://www.ettus.com/sdr-software/uhd-usrp-hardware-driver/</url>
++  <provides>
++    <modalias>usb:vFFFEp0002d*</modalias>
++    <modalias>usb:v2500p0002d*</modalias>
++    <modalias>usb:v2500p0020d*</modalias>
++    <modalias>usb:v2500p0021d*</modalias>
++    <modalias>usb:v3923p7813d*</modalias>
++    <modalias>usb:v3923p7814d*</modalias>
++  </provides>
++</component>

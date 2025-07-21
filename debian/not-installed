@@ -1,0 +1,9 @@
+dpdk/*
+plain/*
+usr/bin/aurora_bist_test
+usr/bin/e320_bist
+usr/bin/usrp_hwd
+usr/share/doc/uhd/LICENSE
+usr/bin/usrp_hwd.py
+usr/bin/usrp_hwd
+usr/lib/*/liblog4cpp.la

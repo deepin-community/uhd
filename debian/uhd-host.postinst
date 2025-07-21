@@ -1,0 +1,13 @@
+#! /bin/sh
+
+set -e
+if [ "$1" = "configure" ]; then
+ # Apply usrp2 networking optimization
+ if [ -x "`which sysctl 2>/dev/null`" ]; then
+   sysctl -p /etc/sysctl.d/uhd-usrp2.conf | true
+ fi
+fi
+
+#DEBHELPER#
+
+exit 0

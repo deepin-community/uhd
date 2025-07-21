@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component>
+  <id>com.ni.uhd</id>
+  <metadata_license>GPL-3+</metadata_license>
+  <name>UHD</name>
+  <summary>USRP Hardware Driver</summary>
+  <description>
+    <p>
+      The Universal Software Defined Radio Peripheral
+    </p>
+  </description>
+  <provides>
+    <modalias>usb:v1D50p604Bd*</modalias>
+    <modalias>usb:v1D50p6089d*</modalias>
+    <modalias>usb:v1D50pCC15d*</modalias>
+    <modalias>usb:v1FC9p000Cd*</modalias>
+  </provides>
+</component>

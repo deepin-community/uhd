@@ -1,0 +1,11 @@
+--- a/host/python/uhd/rfnoc_utils/image_builder.py
++++ b/host/python/uhd/rfnoc_utils/image_builder.py
+@@ -83,7 +83,7 @@
+     if args.get("vivado_path"):
+         viv_path = args["vivado_path"]
+     else:
+-        get_viv_path_cmd = '. ./setupenv.sh && echo "VIVADO_PATH=\$VIVADO_PATH"'
++        get_viv_path_cmd = '. ./setupenv.sh && echo "VIVADO_PATH=$VIVADO_PATH"'
+         try:
+             output = subprocess.check_output(
+                 f'{BASH_EXECUTABLE} -c "{get_viv_path_cmd}"',

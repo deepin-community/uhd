@@ -1,0 +1,36 @@
+From: "A. Maitland Bottoms" <bottoms@debian.org>
+Subject: debian-mathjax-relpath
+
+Debian packages use locally installed mathjax.
+
+--- a/fpga/docs/Doxyfile
++++ b/fpga/docs/Doxyfile
+@@ -1407,7 +1407,7 @@
+ # The default value is: NO.
+ # This tag requires that the tag GENERATE_HTML is set to YES.
+ 
+-USE_MATHJAX            = NO
++USE_MATHJAX            = YES
+ 
+ # When MathJax is enabled you can set the default output format to be used for
+ # the MathJax output. See the MathJax site (see:
+@@ -1430,7 +1430,7 @@
+ # The default value is: http://cdn.mathjax.org/mathjax/latest.
+ # This tag requires that the tag USE_MATHJAX is set to YES.
+ 
+-MATHJAX_RELPATH        = http://cdn.mathjax.org/mathjax/latest
++MATHJAX_RELPATH        = /usr/share/javascript/mathjax
+ 
+ # The MATHJAX_EXTENSIONS tag can be used to specify one or more MathJax
+ # extension names that should be enabled during MathJax rendering. For example
+--- a/host/docs/CMakeLists.txt
++++ b/host/docs/CMakeLists.txt
+@@ -43,7 +43,7 @@
+ option(ENABLE_DOXYGEN_DOT "Let Doxygen use dot (requires graphviz)" OFF)
+ option(ENABLE_DOXYGEN_SHORTNAMES "Let Doxygen use shorter filenames (helps on Windows)" OFF)
+ set(
+-    MATHJAX_RELPATH https://cdn.jsdelivr.net/npm/mathjax@2/
++    MATHJAX_RELPATH /usr/share/javascript/mathjax
+     CACHE STRING "MATHJAX_RELPATH option for Doxygen")
+ mark_as_advanced(MATHJAX_RELPATH)
+ 

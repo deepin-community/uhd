@@ -1,0 +1,73 @@
+From 2f8dc7899f91340b2bc26d1169820becb034f81d Mon Sep 17 00:00:00 2001
+From: "A. Maitland Bottoms" <bottoms@debian.org>
+Date: Fri, 15 Dec 2023 22:29:33 -0500
+Subject: [PATCH] always install utilities
+
+uhd_images_downloader and usrp2_card_burner install on hurd too.
+---
+ host/utils/CMakeLists.txt | 42 +++++++++++++++++++--------------------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/host/utils/CMakeLists.txt b/host/utils/CMakeLists.txt
+index fcb4fd9b0..960b6823e 100644
+--- a/host/utils/CMakeLists.txt
++++ b/host/utils/CMakeLists.txt
+@@ -131,14 +131,13 @@ UHD_INSTALL(PROGRAMS
+     COMPONENT utilities
+ )
+ 
+-if(LINUX)
+-    UHD_INSTALL(PROGRAMS
+-        ${CMAKE_CURRENT_BINARY_DIR}/uhd_images_downloader.py
+-        RENAME uhd_images_downloader
+-        DESTINATION ${RUNTIME_DIR}
+-        COMPONENT utilities
+-    )
+-endif(LINUX)
++UHD_INSTALL(PROGRAMS
++    ${CMAKE_CURRENT_BINARY_DIR}/uhd_images_downloader.py
++    RENAME uhd_images_downloader
++    DESTINATION ${RUNTIME_DIR}
++    COMPONENT utilities
++)
++
+ if(NOT HAVE_PYTHON_MODULE_REQUESTS)
+     message(WARNING "Python module `requests' not found -- uhd_images_downloader.py will not work without it.")
+     message(WARNING "You may be able to install this by running 'pip install requests'")
+@@ -160,19 +159,20 @@ if(ENABLE_USRP2)
+             COMPONENT utilities
+         )
+     endif(WIN32 AND UHD_RELEASE_MODE)
+-    if(LINUX)
+-        UHD_INSTALL(PROGRAMS
+-            usrp2_recovery.py
+-            DESTINATION ${PKG_LIB_DIR}/utils
+-            COMPONENT utilities
+-        )
+-        UHD_INSTALL(PROGRAMS
+-            usrp2_card_burner.py
+-            RENAME usrp2_card_burner
+-            DESTINATION ${RUNTIME_DIR}
+-            COMPONENT utilities
+-        )
+-    endif(LINUX)
++
++    UHD_INSTALL(PROGRAMS
++        usrp2_recovery.py
++        DESTINATION ${PKG_LIB_DIR}/utils
++        COMPONENT utilities
++    )
++
++    UHD_INSTALL(PROGRAMS
++        usrp2_card_burner.py
++        RENAME usrp2_card_burner
++        DESTINATION ${RUNTIME_DIR}
++        COMPONENT utilities
++    )
++
+     foreach(burner ${burners})
+         UHD_INSTALL(PROGRAMS
+             ${burner}
+-- 
+2.39.2
+

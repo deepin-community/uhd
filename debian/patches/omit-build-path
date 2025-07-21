@@ -1,0 +1,18 @@
+From: "A. Maitland Bottoms" <bottoms@debian.org>
+Subject: omit build path
+
+Support reproducible builds by replacing references to the build path.
+
+--- a/host/cmake/Modules/UHDBuildInfo.cmake
++++ b/host/cmake/Modules/UHDBuildInfo.cmake
+@@ -52,7 +52,10 @@
+     endif(MSVC)
+ 
+     # Compiler flags
++    cmake_path(GET CMAKE_BINARY_DIR PARENT_PATH uhd_topdir)
+     get_directory_property(uhd_flags COMPILE_DEFINITIONS)
+     set(UHD_C_FLAGS "${uhd_flags}${CMAKE_C_FLAGS}") # CMAKE_C_FLAGS starts with a space
+     set(UHD_CXX_FLAGS "${uhd_flags}${CMAKE_CXX_FLAGS}") # CMAKE_CXX_FLAGS starts with a space
++    string(REPLACE "${uhd_topdir}" "BUILD_DIR" UHD_C_FLAGS "${UHD_C_FLAGS}")
++    string(REPLACE "${uhd_topdir}" "BUILD_DIR" UHD_CXX_FLAGS "${UHD_CXX_FLAGS}")
+ endmacro(UHD_LOAD_BUILD_INFO)
